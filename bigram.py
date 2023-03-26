@@ -10,12 +10,14 @@ block_size = 64
 max_iters = 3000
 eval_interval = 600
 learning_rate = 1e-4
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
 eval_iters = 500
 n_embd = 384
 n_layers = 6 # Layer siez = n_embd / n_layers = 64
 n_heads = 8
 dropout = 0.1
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+print('Using device:', device)
 
 torch.manual_seed(42)
 

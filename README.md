@@ -39,9 +39,37 @@ TeekkariGPT uses a simplified GPT model with the following components:
 - The model uses characters as tokens.
 
 ## Example
-To be added...
+Here is an example of generated text using the default settings:
 
-Generated text from TeekkariGPT goes here...
+```bash
+python bigram.py
+```
+
+```output
+😍🤩mazing testa10 it 100 all of cä- wete pactHuhumMyteksin Hissinganinen perus looks gonstartTumppa Yrjotella 👌 muuten aptrii pyhämyyneeitä6.  Kokouksen päättäminenPJ päättää kokouksen klo  21.40"
+"Gambina meeeting-ikinä innopullo kehustaaBmFerena., SonjaMakotsu2. Kokouksen laillisuus ja päätösvaltaisuusKokous on laillinen ja päätösvaltainen:-Dommi löytyy jätv-pidentää-kyyksen pyhän kaljansa kokouksessa tekee hemmunen tarrastasissaGambina flowarly unisia is the meeting)elymköin
+Vitun Gaua?
+Erittäin kans
+Jaa tää noinkin nykystä hyinkön. Hervantagambiina alkaa t ovat henkerginKyä pois tykkä ystävien jäsenten hyväksyminen- Petu esillä hande one palvessaTiteltä on saunatustaat hyi vittu ja ilmoituksenssaNegenddrali ei tarjottava gonorma on home losa4.  Uusien kannatusjäsenten hyväksyminen6 kokouksen on hyvät päättämminen ajassa täy baarin agumb2:luumpiaPe ""teep kusisut enroosta gambinaa lasays ensimmää, myös pöykköt pullostapveri on ite löytyy tobea.-iidii ryys ryhmä keskustellaan?Uusien k
+```
+
+The hyperparameters used in the example above are:
+
+```python
+# Hyperparameters
+batch_size = 128
+block_size = 64
+max_iters = 3000
+eval_interval = 600
+learning_rate = 1e-4
+eval_iters = 500
+n_embd = 384
+n_layers = 6
+n_heads = 8
+dropout = 0.1
+```
+
+The validation loss is about 1.5 and the training loss about 1.5 after 3000 iterations. At 3000 iterations the model is not overfitting yet. I would recommend training the model for at least 10 000 iterations.
 
 ## Contributing
 If you would like to contribute to the project or suggest improvements, please submit a pull request or create an issue. Your feedback is always welcome!

@@ -9,24 +9,32 @@ TeekkariGPT is a Python script that uses a super small GPT model to generate non
 ## Installation
 1. Install the required libraries:
 ```bash
-pip install torch tqdm
+pip install -r requirements.txt
 ```
-2. Clone the repository or download the bigram.py file.
+2. Clone the repository or download the bigram.py, train.py, and generate_text.py files.
 
 ## Usage
-1. Download and prepare a dataset from Telegram or other sources.
+1. Download and prepare a dataset from Telegram or other sources. You can use the TelegramMessageExtractor (https://github.com/Sakkov/telegram-data) to extract messages from the HTML files.
 
-2. Run the bigram.py script:
+2. Train the model using the train.py script:
 
 ```bash
-python bigram.py
+python train.py
 ```
 
-You can use any data set as training. I would recommend using a dataset of 1 to 10 million characters. By default the script expects a dataset in the form of a CSV file with a single column. The CSV file should be named "filtered_messages.csv" and placed in the same directory as the script. 
+3. Generate text using the generate_text.py script:
 
-You can also use other file types but you will need to modify the script accordingly.
+```bash
+python generate_text.py
+```
 
-I used a dataset of about 5 million characters extracted from Telegram HTML exports. I used my other project TelegramMessageExtractor (https://github.com/Sakkov/telegram-data) to extract the messages from the HTML files.
+You can alternatively use the provided model to generate text by skipping straight to the text generation step.
+
+## Data Loading
+
+The script supports loading data from either a .txt file or a .csv file. It will first look for a file named 'filtered_messages.txt'. If it doesn't find one, it will try to load a file named 'filtered_messages.csv'. If neither file is found, the script will raise a FileNotFoundError.
+
+To use the script, place your data in a file named 'filtered_messages.txt' or 'filtered_messages.csv' in the same directory as the script.
 
 ## Model Architecture
 TeekkariGPT uses a simplified GPT model with the following components:
@@ -42,7 +50,7 @@ TeekkariGPT uses a simplified GPT model with the following components:
 Here is an example of generated text using the default settings:
 
 ```bash
-python bigram.py
+python generate_text.py
 ```
 
 ```output

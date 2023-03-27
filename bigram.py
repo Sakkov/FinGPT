@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from tqdm import tqdm
+import os
 
 
 # Hyperparameters
@@ -12,7 +13,7 @@ eval_interval = 600
 learning_rate = 1e-4
 eval_iters = 500
 n_embd = 384
-n_layers = 6 # Layer siez = n_embd / n_layers = 64
+n_layers = 6 # Layer size = n_embd / n_layers = 64
 n_heads = 8
 dropout = 0.1
 
@@ -21,9 +22,18 @@ print('Using device:', device)
 
 torch.manual_seed(42)
 
+# Check for the existence of either txt or csv file
+filename = None
+if os.path.exists('filtered_messages.txt'):
+    filename = 'filtered_messages.txt'
+elif os.path.exists('filtered_messages.csv'):
+    filename = 'filtered_messages.csv'
+else:
+    raise FileNotFoundError("Neither 'filtered_messages.txt' nor 'filtered_messages.csv' was found.")
+
 # Load data
-with open('filtered_messages.csv', 'r', encoding='utf-8') as file:
-    content = file.read()
+with open(filename, 'r', encoding='utf-8') as file:
+    content = file.read().replace('\n', ' ')
 
 # Create vocabulary
 vocab = sorted(set(content))
@@ -51,21 +61,6 @@ def get_batch(split):
     y = torch.stack([data[i + 1: i + 1 + block_size] for i in ix])
     x, y = x.to(device), y.to(device)
     return x, y
-
-# Create a function to estimate loss
-@torch.no_grad()
-def loss_estimate():
-    out = {}
-    model.eval()
-    for split in ['train', 'val']:
-        losses = torch.zeros(eval_iters)
-        for i in range(eval_iters):
-            X, Y = get_batch(split)
-            logits, loss = model(X, Y)
-            losses[i] = loss.item()
-        out[split] = losses.mean()
-    model.train()
-    return out
 
 # Create a class for the self-attention head
 class Head(nn.Module):
@@ -175,30 +170,3 @@ class BigramLanguageModel(nn.Module):
             idx_new = torch.multinomial(probs, num_samples=1) # new index
             idx = torch.cat([idx, idx_new], dim=1) # add to the sequence
         return idx
-
-model = BigramLanguageModel()
-m = model.to(device)
-
-# PyTorch optimizer
-opt = torch.optim.Adam(m.parameters(), lr=1e-3)
-
-# Train the model
-print("Training...")
-for steps in tqdm(range(max_iters), desc="Training", unit="step"):
-    
-    # Estimate loss periodically
-    if steps % eval_interval == 0:
-        losses = loss_estimate()
-        print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
-    
-    xb, yb = get_batch('train') # get a batch of data
-    
-    # Evaluate the model
-    logits, loss = m(xb, yb)
-    opt.zero_grad(set_to_none=True)
-    loss.backward()
-    opt.step()
-
-# Generate text
-context = torch.zeros((1,1), dtype=torch.int64, device=device)
-print(decoded(m.generate(context, max_tokens=1000)[0].tolist()))

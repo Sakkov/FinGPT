@@ -30,6 +30,7 @@ elif os.path.exists('filtered_messages.csv'):
     filename = 'filtered_messages.csv'
 else:
     raise FileNotFoundError("Neither 'filtered_messages.txt' nor 'filtered_messages.csv' was found.")
+print('Using file:', filename)
 
 # Load data
 with open(filename, 'r', encoding='utf-8') as file:
@@ -38,6 +39,12 @@ with open(filename, 'r', encoding='utf-8') as file:
 # Create vocabulary
 vocab = sorted(set(content))
 vocab_size = len(vocab)
+print('Vocabulary size:', vocab_size)
+print('Vocabulary:', ''.join(vocab))
+# Export the vocabulary
+with open('vocab.txt', 'w', encoding='utf-8') as file:
+    file.write(''.join(vocab))
+
 # Create a dictionary of characters mapped to integers
 stoi = {ch: i for i, ch in enumerate(vocab)}
 itos = {i: ch for i, ch in enumerate(vocab)}

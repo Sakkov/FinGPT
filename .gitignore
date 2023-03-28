@@ -1,2 +1,4 @@
-filtered_messages.csv
+filtered_messages*
 Pipfile*
+__pycache__/
+__pycache__

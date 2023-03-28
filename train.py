@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
-from bigram import BigramLanguageModel, vocab_size, n_embd, n_heads, n_layers, block_size, decoded, device, max_iters, eval_interval, get_batch, eval_iters
+from bigram import BigramLanguageModel, vocab_size, n_embd, n_heads, n_layers, block_size, decoded, device, max_iters, eval_interval, get_batch, eval_iters, learning_rate
 
 
 
@@ -25,16 +25,16 @@ model = BigramLanguageModel()
 m = model.to(device)
 
 # PyTorch optimizer
-opt = torch.optim.Adam(m.parameters(), lr=1e-3)
+opt = torch.optim.Adam(m.parameters(), lr=learning_rate)
 
 # Train the model
 print("Training...")
 for steps in tqdm(range(max_iters), desc="Training", unit="step"):
     
-    # # Estimate loss periodically
-    # if steps % eval_interval == 0:
-    #     losses = loss_estimate()
-    #     print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
+    # Estimate loss periodically
+    if steps % eval_interval == 0:
+        losses = loss_estimate()
+        print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
     
     xb, yb = get_batch('train') # get a batch of data
     
@@ -43,6 +43,10 @@ for steps in tqdm(range(max_iters), desc="Training", unit="step"):
     opt.zero_grad(set_to_none=True)
     loss.backward()
     opt.step()
+
+# Loss estimate
+losses = loss_estimate()
+print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
 
 # Generate text
 context = torch.zeros((1,1), dtype=torch.int64, device=device)

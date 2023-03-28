@@ -8,12 +8,12 @@ model = BigramLanguageModel().to(device)
 model.load_state_dict(torch.load('model.pt', map_location=device))
 model.eval()
 
-# Load data
-with open('filtered_messages.csv', 'r', encoding='utf-8') as file:
-    content = file.read()
+# Load vocabulary
+with open('vocab.txt', 'r') as f:
+    vocab = f.read()
 
 # Create vocabulary
-vocab = sorted(set(content))
+vocab = sorted(set(vocab))
 vocab_size = len(vocab)
 # Create a dictionary of characters mapped to integers
 stoi = {ch: i for i, ch in enumerate(vocab)}

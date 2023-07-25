@@ -1,4 +1,5 @@
-filtered_messages*
 Pipfile*
 __pycache__/
 __pycache__
+*training_data/
+*.pt

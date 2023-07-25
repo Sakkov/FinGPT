@@ -2,9 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
-from bigram import BigramLanguageModel, vocab_size, n_embd, n_heads, n_layers, block_size, decoded, device, max_iters, eval_interval, get_batch, eval_iters, learning_rate
-
-
+from bigram import BigramLanguageModel, n_embd, n_heads, n_layers, block_size, device, max_iters, eval_interval, eval_iters, learning_rate, dropout, fine_tune_iters, fine_tune_lr, preprocessDataPath, fineTuneDataPath
 
 # Create a function to estimate loss
 @torch.no_grad()
@@ -14,14 +12,14 @@ def loss_estimate():
     for split in ['train', 'val']:
         losses = torch.zeros(eval_iters)
         for i in range(eval_iters):
-            X, Y = get_batch(split)
-            logits, loss = model(X, Y)
+            X, Y = model.get_batch(split)
+            _, loss = model(X, Y)
             losses[i] = loss.item()
         out[split] = losses.mean()
     model.train()
     return out
 
-model = BigramLanguageModel()
+model = BigramLanguageModel([preprocessDataPath, fineTuneDataPath])
 m = model.to(device)
 
 # PyTorch optimizer
@@ -36,7 +34,36 @@ for steps in tqdm(range(max_iters), desc="Training", unit="step"):
         losses = loss_estimate()
         print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
     
-    xb, yb = get_batch('train') # get a batch of data
+    xb, yb = m.get_batch('train')
+    
+    # Evaluate the model
+    logits, loss = m(xb, yb)
+    opt.zero_grad(set_to_none=True)
+    loss.backward()
+    opt.step()
+
+# Save the model
+torch.save(m.state_dict(), 'model_preprocessed.pt')
+
+# Loss estimate
+losses = loss_estimate()
+print("Final loss estimate (preprocessed):")
+print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
+
+# Fine-tune the model
+print("Fine-tuning...")
+m.preprocess(fineTuneDataPath)
+for steps in tqdm(range(fine_tune_iters), desc="Fine-tuning", unit="step"):
+    # Set the learning rate
+    for param_group in opt.param_groups:
+        param_group['lr'] = fine_tune_lr
+
+    m.train()
+    opt.zero_grad()
+    xb, yb = m.get_batch('train')
+    logits, loss = m(xb, yb)
+    loss.backward()
+    opt.step()
     
     # Evaluate the model
     logits, loss = m(xb, yb)
@@ -46,11 +73,14 @@ for steps in tqdm(range(max_iters), desc="Training", unit="step"):
 
 # Loss estimate
 losses = loss_estimate()
+print("Final loss estimate (fine-tuned):")
 print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
 
 # Generate text
 context = torch.zeros((1,1), dtype=torch.int64, device=device)
-print(decoded(m.generate(context, max_tokens=1000)[0].tolist()))
+output_encoded = m.generate(context, max_tokens=1000)[0].tolist()
+output = m.decoded(output_encoded)
+print(output)
 
 # Save the model
-torch.save(m.state_dict(), 'model.pt')
+torch.save(m.state_dict(), 'model_fine_tuned.pt')

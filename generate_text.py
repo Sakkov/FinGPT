@@ -4,9 +4,9 @@ import os
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-preprocessDataPath = 'training_data/Finnish/'
-fineTuneDataPath = 'training_data/Finnish/filtered_messages_2023-07-24_aivansama.txt'
-modelFile = 'model_fine_tuned.pt'
+preprocessDataPath = 'filtered_training_data/Finnish/'
+fineTuneDataPath = 'filtered_training_data/Finnish/filtered_messages_2023-07-24_aivansama.txt'
+modelFile = 'model_preprocessed.pt'
 
 # Load the model
 model = BigramLanguageModel([preprocessDataPath, fineTuneDataPath]).to(device)

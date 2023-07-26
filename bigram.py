@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.nn import functional as F
 from tqdm import tqdm
 import os
+import json
 
 # Default hyperparameters
 batch_size = 128
@@ -21,18 +22,38 @@ train_split = 0.8
 
 # Hyperparameters
 batch_size = 128 # Number of sequences processed in parallel
-block_size = 128 # Number of tokens in a sequence
-max_iters = 3000 # Number of training iterations
-eval_interval = 1000 # Number of iterations between evaluations
+block_size = 256 # Number of tokens in a sequence
+max_iters = 50000 # Number of training iterations
+eval_interval = 10000 # Number of iterations between evaluations
 learning_rate = 1e-4
 eval_iters = 500 # Number of iterations to estimate loss
 n_embd = 512 # Size of the embeddings
 n_layers = int(n_embd / 64) 
 n_heads = 8 # Number of attention heads
 dropout = 0.2 # Dropout rate
-fine_tune_iters = 2000 # Number of iterations to fine-tune the model
+fine_tune_iters = 10000 # Number of iterations to fine-tune the model
 fine_tune_lr = 1e-5 # Learning rate for fine-tuning
-train_split = 0.6 # How much of the data is used for training
+train_split = 0.8 # How much of the data is used for training
+
+# Export hyperparameters as json
+hyperparameters = {
+    'batch_size': batch_size,
+    'block_size': block_size,
+    'max_iters': max_iters,
+    'eval_interval': eval_interval,
+    'learning_rate': learning_rate,
+    'eval_iters': eval_iters,
+    'n_embd': n_embd,
+    'n_layers': n_layers,
+    'n_heads': n_heads,
+    'dropout': dropout,
+    'fine_tune_iters': fine_tune_iters,
+    'fine_tune_lr': fine_tune_lr,
+    'train_split': train_split
+}
+with open('hyperparameters.json', 'w') as file:
+    json.dump(hyperparameters, file)
+
 
 preprocessDataPath = 'filtered_training_data/Finnish/'
 fineTuneDataPath = 'filtered_training_data/Finnish/filtered_messages_2023-07-24_aivansama.txt'

@@ -52,18 +52,19 @@ print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['va
 
 # Fine-tune the model
 print("Fine-tuning...")
-m.preprocess(fineTuneDataPath)
+# Set the learning rate
+for param_group in opt.param_groups:
+    param_group['lr'] = fine_tune_lr
+m.preprocess(source=1) # 1 = fine-tune
+m.train()
 for steps in tqdm(range(fine_tune_iters), desc="Fine-tuning", unit="step"):
-    # Set the learning rate
-    for param_group in opt.param_groups:
-        param_group['lr'] = fine_tune_lr
 
-    m.train()
-    opt.zero_grad()
+    # Estimate loss periodically
+    if steps % eval_interval == 0:
+        losses = loss_estimate()
+        print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['val']:.4f}")
+
     xb, yb = m.get_batch('train')
-    logits, loss = m(xb, yb)
-    loss.backward()
-    opt.step()
     
     # Evaluate the model
     logits, loss = m(xb, yb)

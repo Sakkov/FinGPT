@@ -23,16 +23,16 @@ train_split = 0.8
 # Hyperparameters
 batch_size = 128 # Number of sequences processed in parallel
 block_size = 256 # Number of tokens in a sequence
-max_iters = 50000 # Number of training iterations
-eval_interval = 10000 # Number of iterations between evaluations
-learning_rate = 1e-4
+max_iters = 500 # Number of training iterations
+eval_interval = 250 # Number of iterations between evaluations
+learning_rate = 1e-3
 eval_iters = 500 # Number of iterations to estimate loss
 n_embd = 512 # Size of the embeddings
 n_layers = int(n_embd / 64) 
 n_heads = 8 # Number of attention heads
-dropout = 0.2 # Dropout rate
-fine_tune_iters = 10000 # Number of iterations to fine-tune the model
-fine_tune_lr = 1e-5 # Learning rate for fine-tuning
+dropout = 0.1 # Dropout rate
+fine_tune_iters = 500 # Number of iterations to fine-tune the model
+fine_tune_lr = 1e-4 # Learning rate for fine-tuning
 train_split = 0.8 # How much of the data is used for training
 
 # Export hyperparameters as json
@@ -55,23 +55,13 @@ with open('hyperparameters.json', 'w') as file:
     json.dump(hyperparameters, file)
 
 
-preprocessDataPath = 'filtered_training_data/Finnish/'
+preprocessDataPath = 'filtered_training_data/Finnish/wikipedia-fi-2017/'
 fineTuneDataPath = 'filtered_training_data/Finnish/filtered_messages_2023-07-24_aivansama.txt'
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print('Using device:', device)
 
 torch.manual_seed(42)
-
-# Check if the given path is a file or a directory
-def is_file(path):
-    if os.path.exists(path):
-        if os.path.isfile(path):
-            return True
-        else:
-            return False
-    else:
-        raise FileNotFoundError(f"File {path} not found")
 
 # Create a class for the self-attention head
 class Head(nn.Module):
@@ -155,11 +145,23 @@ class BigramLanguageModel(nn.Module):
         '''
         super().__init__()
 
+        # Read the data
+        self.content = ['','']
+        count = 0
+        try:
+            for source in sources:
+                self.content[count] += self.read_file_to_string(source)
+                count += 1
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File {source} not found")
+        except Exception as e:
+            raise e
+
         # Create vocabulary
         self.create_vocab(sources)
         
         # Preprocess the data
-        self.preprocess(sources[0])
+        self.preprocess(source=0) # 0 = pretrain, 1 = finetune
         
         # Create the model
         self.token_embedding = nn.Embedding(self.vocab_size, n_embd)
@@ -174,47 +176,47 @@ class BigramLanguageModel(nn.Module):
 
         source: path to the source file
         '''
-        try:
-            if is_file(source):
-                with open(source, 'r', encoding='utf-8', errors='ignore') as file:
-                    content = file.read()
-                print('Using file:', source)
-            else:
-                content = ''
-                for filename in os.listdir(source):
-                    with open(source + filename, 'r', encoding='utf-8', errors= 'ignore') as file:
-                        content += file.read()
-                print('Using directory:', source)
-        except FileNotFoundError:
-            raise FileNotFoundError(f"File {source} not found")
-        except Exception as e:
-            raise e
 
         # Encode the entire content
-        self.encoded_content = self.encoded(content)
+        self.encoded_content = self.encoded(self.content[source])
+        print(f"Encoded {len(self.encoded_content)} tokens")
         self.encoded_content = torch.tensor(self.encoded_content, dtype=torch.int64)
+        print(f"Encoded {len(self.encoded_content)} tokens")
 
         # Split the data into training and validation sets
         self.train_size = int(len(self.encoded_content) * train_split)
+        print(f"Training set size: {self.train_size}")
         self.train_data = self.encoded_content[:self.train_size]
         self.val_data = self.encoded_content[self.train_size:]
+        print(f"Validation set size: {len(self.val_data)}")
+
+    def read_file_to_string(self, source):
+        '''
+        Read the file recursively and return the string
+        '''
+        local_content = ''
+        if os.path.isfile(source):
+            with open(source, 'r', encoding='utf-8', errors='ignore') as file:
+                source_size = os.path.getsize(source)
+                print(f"Reading {source} of size {round(source_size/1048576)}MiB")
+                # Read the file
+                local_content += file.read()
+                print("Done")
+                print(f"Read {len(local_content)} characters.\n\n")
+        else:
+            for filename in os.listdir(source):
+                local_content += self.read_file_to_string(f"{source}/{filename}")
+        return local_content
 
     def create_vocab(self, sources):
         '''
         Create the vocabulary and dictionaries
         '''
-        content = ''
-        for source in sources:
-            if is_file(source):
-                with open(source, 'r', encoding='utf-8', errors='ignore') as file:
-                    content += file.read()
-            else:
-                for filename in os.listdir(source):
-                    with open(source + filename, 'r', encoding='utf-8', errors= 'ignore') as file:
-                        content += file.read()
+        # Create flatten str from content
+        local_content = self.content[0] + self.content[1]
 
         # Create vocabulary
-        self.vocab = sorted(set(content))
+        self.vocab = sorted(set(local_content))
         self.vocab_size = len(self.vocab)
         print('Vocabulary size:', self.vocab_size)
         print('Vocabulary:', ''.join(self.vocab))

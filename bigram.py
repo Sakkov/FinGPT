@@ -56,7 +56,7 @@ with open('hyperparameters.json', 'w') as file:
 
 
 preprocessDataPath = 'filtered_training_data/Finnish/wikipedia-fi-2017/'
-fineTuneDataPath = 'filtered_training_data/Finnish/filtered_messages_2023-07-24_aivansama.txt'
+fineTuneDataPath = 'filtered_training_data/Finnish/filtered_messages.txt'
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print('Using device:', device)

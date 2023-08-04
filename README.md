@@ -1,5 +1,7 @@
-# TeekkariGPT
-TeekkariGPT is a Python script that uses a super small GPT model to generate nonsensical text imitating intoxicated teekkari (Finnish engineering students) conversations. The model is trained on a dataset of messages extracted from Telegram exports.
+# FinGPT
+FinGPT is a Python script that trains, evaluates, and generates Finnish text. The example model was trained on a dataset of mainly Finnish messages from a Telegram group chat. The model is based on the GPT architecture and uses characters as token.
+
+If you want to play with the produced model FinGPT-1.0, you do so for free at https://fingpt.fi. The generation is happening on super weak metal. If you want to help me out, you can donate some GPU time at https://bmc.link/sakkov.
 
 ## Requirements
 - Python 3.7+
@@ -7,14 +9,17 @@ TeekkariGPT is a Python script that uses a super small GPT model to generate non
 - tqdm
 
 ## Installation
-1. Install the required libraries:
+1. Clone the repository or download the bigram.py, train.py, and generate_text.py files.
+
+2. Install the required libraries:
 ```bash
 pip install -r requirements.txt
 ```
-2. Clone the repository or download the bigram.py, train.py, and generate_text.py files.
 
 ## Usage
 1. Download and prepare a dataset from Telegram or other sources. You can use the TelegramMessageExtractor (https://github.com/Sakkov/telegram-data) to extract messages from the HTML files.
+
+    1.5 (Optional) Filter the dataset using the filter_dataset.py script. The script removes tokens(characters) that are not common in regular Finnish language such as emojis. 
 
 2. Train the model using the train.py script:
 
@@ -28,16 +33,35 @@ python train.py
 python generate_text.py
 ```
 
-You can alternatively use the provided model to generate text by skipping straight to the text generation step.
+You can alternatively use any other compatible model to generate text by skipping straight to the text generation step.
 
 ## Data Loading
 
-The script supports loading data from either a .txt file or a .csv file. It will first look for a file named 'filtered_messages.txt'. If it doesn't find one, it will try to load a file named 'filtered_messages.csv'. If neither file is found, the script will raise a FileNotFoundError.
+The script supports loading data from a .txt file. 
 
-To use the script, place your data in a file named 'filtered_messages.txt' or 'filtered_messages.csv' in the same directory as the script.
+In the file bigram.py you can specify the path to the dataset and adjust the following parameters:
+
+```python
+preprocessDataPath = 'filtered_training_data/Finnish/wikipedia-fi-2017/'
+fineTuneDataPath = 'filtered_training_data/Finnish/filtered_messages.txt'
+
+batch_size = 128
+block_size = 128
+max_iters = 100000
+eval_interval = 10000
+learning_rate = 1e-4
+eval_iters = 500
+n_embd = 512
+n_layers = int(n_embd / 64)
+n_heads = 8
+dropout = 0.2
+fine_tune_iters = 10000
+fine_tune_lr = 1e-5
+train_split = 0.8
+```
 
 ## Model Architecture
-TeekkariGPT uses a simplified GPT model with the following components:
+FinGPT uses a simplified GPT model with the following components:
 
 - Token and position embeddings
 - Self-attention heads (MultiHead)
@@ -47,7 +71,7 @@ TeekkariGPT uses a simplified GPT model with the following components:
 - The model uses characters as tokens.
 
 ## Example
-Here is an example of generated text using the default settings:
+Here is an example of generated text using the example model:
 
 ```bash
 python generate_text.py

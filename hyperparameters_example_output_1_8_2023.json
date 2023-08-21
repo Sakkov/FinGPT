@@ -1,0 +1,1 @@
+{"batch_size": 128, "block_size": 256, "max_iters": 50000, "eval_interval": 5000, "learning_rate": 0.001, "eval_iters": 500, "n_embd": 512, "n_layers": 8, "n_heads": 8, "dropout": 0.1, "fine_tune_iters": 20000, "fine_tune_lr": 1e-05, "train_split": 0.8}

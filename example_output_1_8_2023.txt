@@ -1,0 +1,400 @@
+Using device: cuda
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part0.VRT.txt of size 10MiB
+Done
+Read 10035877 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part1.VRT.txt of size 10MiB
+Done
+Read 10050063 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part10.VRT.txt of size 10MiB
+Done
+Read 9881400 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part11.VRT.txt of size 10MiB
+Done
+Read 9818222 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part12.VRT.txt of size 10MiB
+Done
+Read 9801041 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part13.VRT.txt of size 10MiB
+Done
+Read 9793528 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part14.VRT.txt of size 10MiB
+Done
+Read 9738331 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part15.VRT.txt of size 10MiB
+Done
+Read 9696615 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part16.VRT.txt of size 10MiB
+Done
+Read 9742753 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part17.VRT.txt of size 10MiB
+Done
+Read 9734536 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part18.VRT.txt of size 10MiB
+Done
+Read 9707870 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part19.VRT.txt of size 10MiB
+Done
+Read 9704190 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part2.VRT.txt of size 10MiB
+Done
+Read 10035800 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part20.VRT.txt of size 10MiB
+Done
+Read 9673951 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part21.VRT.txt of size 10MiB
+Done
+Read 9680519 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part22.VRT.txt of size 10MiB
+Done
+Read 9689694 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part23.VRT.txt of size 10MiB
+Done
+Read 9650598 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part24.VRT.txt of size 10MiB
+Done
+Read 9635370 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part25.VRT.txt of size 10MiB
+Done
+Read 9612917 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part26.VRT.txt of size 10MiB
+Done
+Read 9542872 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part27.VRT.txt of size 10MiB
+Done
+Read 9615169 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part28.VRT.txt of size 10MiB
+Done
+Read 9551434 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part29.VRT.txt of size 10MiB
+Done
+Read 9516099 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part3.VRT.txt of size 10MiB
+Done
+Read 10014747 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part30.VRT.txt of size 10MiB
+Done
+Read 9525049 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part31.VRT.txt of size 10MiB
+Done
+Read 9511006 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part32.VRT.txt of size 10MiB
+Done
+Read 9496892 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part33.VRT.txt of size 9MiB
+Done
+Read 9442282 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part34.VRT.txt of size 9MiB
+Done
+Read 9392965 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part35.VRT.txt of size 10MiB
+Done
+Read 9562300 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part36.VRT.txt of size 10MiB
+Done
+Read 9485750 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part37.VRT.txt of size 10MiB
+Done
+Read 9505855 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part38.VRT.txt of size 10MiB
+Done
+Read 9510538 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part39.VRT.txt of size 9MiB
+Done
+Read 9477413 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part4.VRT.txt of size 10MiB
+Done
+Read 10020676 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part40.VRT.txt of size 10MiB
+Done
+Read 9508005 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part41.VRT.txt of size 9MiB
+Done
+Read 9458215 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part42.VRT.txt of size 9MiB
+Done
+Read 9446132 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part43.VRT.txt of size 9MiB
+Done
+Read 9469516 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part44.VRT.txt of size 9MiB
+Done
+Read 9446240 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part45.VRT.txt of size 9MiB
+Done
+Read 9425953 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part46.VRT.txt of size 9MiB
+Done
+Read 9452927 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part47.VRT.txt of size 9MiB
+Done
+Read 9400240 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part48.VRT.txt of size 9MiB
+Done
+Read 9436594 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part49.VRT.txt of size 9MiB
+Done
+Read 9278383 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part5.VRT.txt of size 10MiB
+Done
+Read 9961849 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part50.VRT.txt of size 9MiB
+Done
+Read 9324904 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part51.VRT.txt of size 9MiB
+Done
+Read 9357570 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part52.VRT.txt of size 9MiB
+Done
+Read 9266983 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part53.VRT.txt of size 9MiB
+Done
+Read 9332455 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part54.VRT.txt of size 9MiB
+Done
+Read 9373921 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part55.VRT.txt of size 9MiB
+Done
+Read 9473759 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part56.VRT.txt of size 9MiB
+Done
+Read 9386781 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part57.VRT.txt of size 9MiB
+Done
+Read 9381201 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part58.VRT.txt of size 9MiB
+Done
+Read 9437887 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part59.VRT.txt of size 9MiB
+Done
+Read 9452495 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part6.VRT.txt of size 10MiB
+Done
+Read 9981504 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part60.VRT.txt of size 9MiB
+Done
+Read 9427040 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part61.VRT.txt of size 9MiB
+Done
+Read 9354491 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part62.VRT.txt of size 9MiB
+Done
+Read 9417350 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part63.VRT.txt of size 9MiB
+Done
+Read 9329587 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part64.VRT.txt of size 9MiB
+Done
+Read 9241410 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part65.VRT.txt of size 1MiB
+Done
+Read 1299929 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part7.VRT.txt of size 10MiB
+Done
+Read 9949277 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part8.VRT.txt of size 10MiB
+Done
+Read 9883358 characters.
+
+
+Reading filtered_training_data/Finnish/wikipedia-fi-2017//wiki_part9.VRT.txt of size 10MiB
+Done
+Read 9920981 characters.
+
+
+Reading filtered_training_data/Finnish/suomi24-2001-2017/s24_2001.vrt.txt of size 516MiB
+Done
+Read 506649776 characters.
+
+
+Vocabulary size: 96
+Vocabulary:
+ !"$'(),./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{} £ÄÅÖäåö€
+Encoded 624731259 tokens
+Encoded 624731259 tokens
+Training set size: 499785007
+Validation set size: 124946252
+Training...
+Training:   0%|                                                                                                                                                                                                                                                | 0/50000 [00:00<?, ?step/s]Step 0: train loss = 4.8106, val loss = 4.8133
+Training:  10%|██████████████████████▋                                                                                                                                                                                                            | 5000/50000 [47:21<6:31:24,  1.92step/s]Step 5000: train loss = 1.1405, val loss = 1.1484
+Training:  20%|████████████████████████████████████████████▊                                                                                                                                                                                   | 10000/50000 [1:33:12<5:47:18,  1.92step/s]Step 10000: train loss = 1.0364, val loss = 1.0470
+Training:  30%|███████████████████████████████████████████████████████████████████▏                                                                                                                                                            | 15000/50000 [2:19:01<5:04:21,  1.92step/s]Step 15000: train loss = 0.9860, val loss = 0.9985
+Training:  40%|█████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                                                      | 20000/50000 [3:04:47<4:20:06,  1.92step/s]Step 20000: train loss = 0.9568, val loss = 0.9724
+Training:  50%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                                                                | 25000/50000 [3:50:30<3:36:55,  1.92step/s]Step 25000: train loss = 0.9390, val loss = 0.9554
+Training:  60%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                                                                                         | 30000/50000 [4:36:14<2:53:13,  1.92step/s]Step 30000: train loss = 0.9247, val loss = 0.9407
+Training:  70%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                   | 35000/50000 [5:21:56<2:09:30,  1.93step/s]Step 35000: train loss = 0.9111, val loss = 0.9277
+Training:  80%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                                            | 40000/50000 [6:07:39<1:26:39,  1.92step/s]Step 40000: train loss = 0.9035, val loss = 0.9212
+Training:  90%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                      | 45000/50000 [6:53:20<43:14,  1.93step/s]Step 45000: train loss = 0.8959, val loss = 0.9149
+Training: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50000/50000 [7:39:02<00:00,  1.82step/s]
+Final loss estimate (preprocessed):
+Step 49999: train loss = 0.8910, val loss = 0.9099
+Fine-tuning...
+Encoded 506649776 tokens
+Encoded 506649776 tokens
+Training set size: 405319820
+Validation set size: 101329956
+Fine-tuning:   0%|                                                                                                                                                                                                                                             | 0/20000 [00:00<?, ?step/s]Step 0: train loss = 1.5078, val loss = 1.5023
+Fine-tuning:  25%|████████████████████████████████████████████████████████                                                                                                                                                                        | 5000/20000 [45:40<2:09:49,  1.93step/s]Step 5000: train loss = 1.2451, val loss = 1.2470
+Fine-tuning:  50%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                              | 10000/20000 [1:31:41<1:26:32,  1.93step/s]Step 10000: train loss = 1.2171, val loss = 1.2199
+Fine-tuning:  75%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                                                       | 15000/20000 [2:17:27<43:21,  1.92step/s]Step 15000: train loss = 1.2008, val loss = 1.2038
+Fine-tuning: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20000/20000 [3:03:22<00:00,  1.82step/s]
+Final loss estimate (fine-tuned):
+Step 19999: train loss = 1.1879, val loss = 1.1927
+
+
+ Itse en pysty yhjeskelemään, ottakoon väärinkäyttökoti vaikkei uustyyli olekaan maasta.
+
+ Hyväilen
+
+ Onko siinä miten vastaus minäkin / siinähän osat?
+
+ Ylipäättänyt pystyy näkemään, mutta suurta kustannuskeinoa ei siinä.
+
+ Näyttää olevan selain, mutta myöntää, että N. 35 on hauska nöö minkä suurimmaan oon ottanut huvilasta siinä böökkiin jolla on oma vastuullinen mahdollinen satunta.
+
+ Apteekit potkii mutta ne estävät böökiä.
+
+ " Eipä pysty höööreihin " kun koskee maalimailia ollessasi!
+
+ Pissa maalimailia tehdään.
+
+ " Eipä foorumi " enää siitä mitään virhettä äijäni höhaluaa ristiriitoja töihin.
+
+ Olen yltä joka siivoo  peräefekti, tässä on pelkkä tunnoilmalasti jota ei oltu 3 vuotiaakaan liikkeellä.
+
+ Sinun huvitoksista / hyväävyöhykkeistä.
+
+ Kirjotimme myös kissa: ehkä se nykyinen aidanvalmistaja leipä.
+
+ Kaikkisen huvittajan on pyydettävä hehkua nimikirjottajalta!
+
+ Sama kaupunginosa ja edes kuivalta aukiolta
+
+ Joo jani jani vähän ällöstä tulevan, kyllä Kirjottajan taas vähän v

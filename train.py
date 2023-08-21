@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
-from bigram import BigramLanguageModel, n_embd, n_heads, n_layers, block_size, device, max_iters, eval_interval, eval_iters, learning_rate, dropout, fine_tune_iters, fine_tune_lr, preprocessDataPath, fineTuneDataPath
+from bigram import BigramLanguageModel, device, max_iters, eval_interval, eval_iters, learning_rate, fine_tune_iters, fine_tune_lr, preprocessDataPath, fineTuneDataPath
 
 # Create a function to estimate loss
 @torch.no_grad()
@@ -80,7 +80,7 @@ print(f"Step {steps}: train loss = {losses['train']:.4f}, val loss = {losses['va
 # Generate text
 context = torch.zeros((1,1), dtype=torch.int64, device=device)
 output_encoded = m.generate(context, max_tokens=1000)[0].tolist()
-output = m.decoded(output_encoded)
+output = m.decode(output_encoded)
 print(output)
 
 # Save the model

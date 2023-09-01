@@ -1,10 +1,8 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from tqdm import tqdm
 import os
 import json
-import sys
 
 # Default hyperparameters
 batch_size = 128
@@ -161,18 +159,24 @@ class BigramLanguageModel(nn.Module):
         self.create_vocab(sources)
 
         # Create a dictionary of characters mapped to integers
+        print("Creating dictionaries...")
         self.stoi = {ch: i for i, ch in enumerate(self.vocab)}
         self.itos = {i: ch for i, ch in enumerate(self.vocab)}
-        self.encode = lambda s: [self.stoi[ch] for ch in s]  # encode a string
-        self.decode = lambda l: "".join(
-            [self.itos[i] for i in l]
+        self.encode = lambda string: [self.stoi[ch] for ch in string]  # encode a string
+        self.decode = lambda list: "".join(
+            [self.itos[li] for li in list]
         )  # decode a list of integers
+        print("Done\n\n")
 
         # Encode the content
+        print("Encoding the content...")
         for source_n in range(len(self.content)):
             self.content[source_n] = self.encode(self.content[source_n])
-            self.content[source_n] = torch.tensor(self.content[source_n], dtype=torch.int64)
+            self.content[source_n] = torch.tensor(
+                self.content[source_n], dtype=torch.int64
+            )
             print(f"Encoded {len(self.content[source_n])} tokens")
+        print("Done\n\n")
 
         # Preprocess the data
         self.preprocess(source=0)  # 0 = pretrain, 1 = finetune
@@ -190,6 +194,7 @@ class BigramLanguageModel(nn.Module):
         """
         Preprocess the data
         """
+        print("Preprocessing the data...")
 
         # Split the data into training and validation sets
         self.train_size = int(len(self.content[source]) * train_split)
@@ -197,6 +202,7 @@ class BigramLanguageModel(nn.Module):
         self.train_data = self.content[source][: self.train_size]
         self.val_data = self.content[source][self.train_size :]
         print(f"Validation set size: {len(self.val_data)}")
+        print("Done\n\n")
 
     def read_file_to_string(self, source):
         """
@@ -206,7 +212,7 @@ class BigramLanguageModel(nn.Module):
             with open(source, "r", encoding="utf-8", errors="ignore") as file:
                 content = file.read()
                 print(
-                    f"Reading {source} of size {round(os.path.getsize(source)/1048576)}MiB"
+                    f"Reading {source} of size {round(os.path.getsize(source)/1048576)}MiB" # noqa: E501
                 )
                 print("Done")
                 print(f"Read {len(content)} characters.\n\n")
@@ -221,6 +227,7 @@ class BigramLanguageModel(nn.Module):
         """
         Create the vocabulary and dictionaries
         """
+        print("Creating vocabulary...")
         vocab_set = set()
         for content in self.content:
             vocab_set.update(set(content))
@@ -230,10 +237,12 @@ class BigramLanguageModel(nn.Module):
         self.vocab_size = len(self.vocab)
         print("Vocabulary size:", self.vocab_size)
         print("Vocabulary:", "".join(self.vocab))
+        print("Done")
 
         # Export the vocabulary
         with open("vocab.txt", "w", encoding="utf-8") as file:
             file.write("".join(self.vocab))
+        print("Vocabulary exported to vocab.txt\n\n")
 
     # Create a function to generate batches of data
     def get_batch(self, split):

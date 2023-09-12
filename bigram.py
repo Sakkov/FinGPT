@@ -54,7 +54,7 @@ with open("hyperparameters.json", "w") as file:
     json.dump(hyperparameters, file)
 
 
-preprocessDataPath = "filtered_training_data/Finnish/custom_finGPT-1.2_21_8_2023"
+preprocessDataPath = "filtered_training_data/Finnish/custom_finGPT-1.2_1_9_2023"
 fineTuneDataPath = "filtered_training_data/Finnish/suomi24-2001-2017/s24_2017.vrt.txt"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -209,11 +209,11 @@ class BigramLanguageModel(nn.Module):
         Read the file recursively and return the string
         """
         if os.path.isfile(source):
+            print(
+                f"Reading {source} of size {round(os.path.getsize(source)/1048576)}MiB" # noqa: E501
+            )
             with open(source, "r", encoding="utf-8", errors="ignore") as file:
                 content = file.read()
-                print(
-                    f"Reading {source} of size {round(os.path.getsize(source)/1048576)}MiB" # noqa: E501
-                )
                 print("Done")
                 print(f"Read {len(content)} characters.\n\n")
                 return content

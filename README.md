@@ -1,7 +1,7 @@
 # FinGPT
 FinGPT is a Python script that trains, evaluates, and generates Finnish text. The example model was trained on a dataset of mainly Finnish messages from a Telegram group chat. The model is based on the GPT architecture and uses characters as token.
 
-If you want to play with the produced model FinGPT-1.0, you do so for free at https://fingpt.fi (Currently out of service). The generation is happening on super weak metal. If you want to help me out, you can donate some GPU time at https://bmc.link/sakkov.
+If you want to play with the produced model FinGPT-1.0, you do so for free at https://fingpt.fi (Currently out of service). The generation is happening on super weak metal.
 
 ## Requirements
 - Python 3.7+
